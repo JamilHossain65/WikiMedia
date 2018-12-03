@@ -12,9 +12,11 @@
 		8722801821B5112200A93A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8722801621B5112200A93A6E /* Main.storyboard */; };
 		8722801A21B5112300A93A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8722801921B5112300A93A6E /* Assets.xcassets */; };
 		8722801D21B5112300A93A6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8722801B21B5112300A93A6E /* LaunchScreen.storyboard */; };
+		A47DB00C3F5F8551C7BF65AC /* Pods_WikiMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		201E78F2503BFCF647332955 /* Pods-WikiMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia.debug.xcconfig"; sourceTree = "<group>"; };
 		8722800F21B5112200A93A6E /* WikiMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8722801221B5112200A93A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8722801421B5112200A93A6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		8722801921B5112300A93A6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8722801C21B5112300A93A6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8722801E21B5112300A93A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikiMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAF5E17A52E7B7B4624B0444 /* Pods-WikiMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A47DB00C3F5F8551C7BF65AC /* Pods_WikiMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		166B9B62A8710CDFE15532E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				201E78F2503BFCF647332955 /* Pods-WikiMedia.debug.xcconfig */,
+				EAF5E17A52E7B7B4624B0444 /* Pods-WikiMedia.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8722800621B5112200A93A6E = {
 			isa = PBXGroup;
 			children = (
 				8722801121B5112200A93A6E /* WikiMedia */,
 				8722801021B5112200A93A6E /* Products */,
+				166B9B62A8710CDFE15532E7 /* Pods */,
+				F2A71F001DD75292AF11944E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = WikiMedia;
 			sourceTree = "<group>";
 		};
+		F2A71F001DD75292AF11944E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8722802121B5112300A93A6E /* Build configuration list for PBXNativeTarget "WikiMedia" */;
 			buildPhases = (
+				E1590E64A72243FDC4A9E370 /* [CP] Check Pods Manifest.lock */,
 				8722800B21B5112200A93A6E /* Sources */,
 				8722800C21B5112200A93A6E /* Frameworks */,
 				8722800D21B5112200A93A6E /* Resources */,
+				F1B681BCCC7C3C4BFD471774 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E1590E64A72243FDC4A9E370 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WikiMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1B681BCCC7C3C4BFD471774 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8722800B21B5112200A93A6E /* Sources */ = {
@@ -278,6 +351,7 @@
 		};
 		8722802221B5112300A93A6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 201E78F2503BFCF647332955 /* Pods-WikiMedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +371,7 @@
 		};
 		8722802321B5112300A93A6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAF5E17A52E7B7B4624B0444 /* Pods-WikiMedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

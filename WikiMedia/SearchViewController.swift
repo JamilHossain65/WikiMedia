@@ -1,48 +1,63 @@
 //
-//  SearchViewController.swift
+//  SearchBarViewController.swift
 //  CraftBeer
 //
-//  Created by Jamil on 11/9/18.
-//  Copyright © 2018 Jamil. All rights reserved.
+//  Created by Humayun Kabir on 11/9/18.
+//  Copyright © 2018 Humayun Kabir. All rights reserved.
 //
 
 import UIKit
 
+//import MapKit
 import Alamofire
 import SVProgressHUD
+//import SDWebImage
+//import SwiftHash
 
-class SearchViewController:BaseViewController {
+
+class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+    
+    @IBOutlet weak var myTableView: UITableView!
+    
+    var currentTextField = UITextField()
     
     let webClient = WebClientSearch.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        self.title = "Search"
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        myTableView.backgroundColor = UIColor.lightGray
+        myTableView.separatorStyle = .singleLine
+        myTableView.tableFooterView = UIView()
         
-        //self.initTabBar()
-        //
-        let add = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(addButtonPressed))
+        let add = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addButtonPressed))
         //navigationItem.rightBarButtonItems = [add]
         navigationItem.rightBarButtonItem = add
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     @objc func addButtonPressed(){
         print("addButtonPressed")
-        self.searchRequest()
+        self.showAlert(msg: "Under development")
     }
     
     //MARK: SEARCH REQUEST
-    func searchRequest(){
+    func searchRequestWith(text:String){
         //https://en.mediawiki.org/w/api.php?action=query&list=search&srsearch=Nelson%20Mandela&format=json
         let webClient = WebClientSearch.shared
         webClient.action = "query"
         webClient.list = "search"
-        webClient.srsearch = "Nelson%20Mandela"
+        webClient.srsearch = text //"Nelson%20Mandela"
         webClient.format = "json"
         
         let params:Parameters = WebClientSearch.shared.getParam()
@@ -71,26 +86,166 @@ class SearchViewController:BaseViewController {
             
             if response.result.value != nil {
                 guard let response = response.result.value! as? [String:Any] else{return}
-                let data = response["continue"] as! [String:Any]
-                //let searchResult:[String:Any] = data["query"] as! [String:Any]
                 
-                let searchQuery = response["query"] as! [String:Any]
-                let searchArray = searchQuery["search"]
-                print("searchArray:\(searchArray)")
-                //if searchArray.count == 0  {return}
                 
-                self.webClient.setSearchList(list:searchArray as! NSArray)
-                print("searchList count:\(self.webClient.searchList.count)")
-                
-                for search in self.webClient.searchList{
-                    print("\(search.title)")
+                if let error = response["error"] as? [String:Any]{
+                    let info = error["info"] as! String
+                    self.webClient.setSearchList(list:[])
+                    
+                    DispatchQueue.main.async {
+                        self.myTableView.reloadData()
+                    }
+                    
+                    self.showAlert(msg: info)
+                    
+                }else{
+                    //let data = response["continue"] as! [String:Any]
+                  
+                    if let searchQuery = response["query"] as? [String:Any]{
+                        if let searchArray = searchQuery["search"]{
+                            //print("searchArray:\(searchArray)")
+                            
+                            self.webClient.setSearchList(list:searchArray as! NSArray)
+                            print("searchList count:\(self.webClient.searchList.count)")
+                            
+                            for search in self.webClient.searchList{
+                                print("\(search.title)")
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self.myTableView.reloadData()
+                            }
+                        }
+                        
+                    }
+                   
                 }
+                
                 
             }
         }
         //
     }
     
+    
+    // MARK: - Table View
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        var height : CGFloat = 100.0
+        
+        if(indexPath.section == 0){
+            height = 60.0
+        }
+        
+        return height;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        let webClient = WebClientSearch.shared
+        
+        if(section==0){
+            return 1
+        }
+        
+        return webClient.searchList.count
+    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+//    {
+//        let view : UIView = UIView()
+//        view.backgroundColor = UIColor.clear;
+//        return view;
+//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        
+        if(indexPath.section == 0){
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellSearchBar", for: indexPath) as? CellSearchBar  else {
+                fatalError("The dequeued cell is not an instance of CellSearchBar.")
+            }
+            cell.inputTextField.delegate = self
+            cell.searchButton.addTarget(self, action: #selector(self.searchButtonPressed(btn:)), for: UIControlEvents.touchUpInside)
+            return cell
+            
+        }else{
+            
+            let webClient = WebClientSearch.shared
+            if(webClient.searchList.count == 0){
+                /*
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellEmpty", for: indexPath) as? CellEmpty  else {
+                    fatalError("The dequeued cell is not an instance of CellEmpty.")
+                }
+                cell.titleLabel.text = "No result found"
+                //cell.selectionStyle = UITableViewCellSelectionStyle.none
+ */
+                return UITableViewCell()
+            }
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellResult", for: indexPath) as? CellResult else {
+                fatalError("The dequeued cell is not an instance of CellResult.")
+            }
+            cell.backgroundColor = UIColor.white
+            
+            let result = webClient.searchList[indexPath.row]
+            cell.titleLabel?.text = result.title
+            
+            cell.detailLabel?.numberOfLines = 0
+            cell.detailLabel?.text = result.snippet
+            cell.detailLabel?.backgroundColor = UIColor.white
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        print("=> Row no. \(indexPath.row) selected ")
+//        let viewController:BarDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BarDetailViewController") as! BarDetailViewController
+//
+//        let webClient = WebClientSearchBarList.shared
+//        if(webClient.barList.count == 0){return}
+//        let bar:Bar = webClient.barList[indexPath.row]
+//        //viewController.review = review
+//        viewController.bar_id = bar.BarId
+//        viewController.barName = bar.Name
+//        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func searchButtonPressed(btn:UIButton){
+        print("searchButtonPressed")
+        currentTextField.resignFirstResponder()
+        self.searchRequestWith(text: currentTextField.text!)
+    }
+    
+    // MARK:- TextFieldDelegate
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
+    {
+        currentTextField = textField
+        return true;
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        //print("TextField Value = \(textField.text ?? "No value")")
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        print("TextField text = \(textField.text ?? "No text")")
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
-
 

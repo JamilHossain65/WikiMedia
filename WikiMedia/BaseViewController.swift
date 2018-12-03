@@ -27,11 +27,11 @@ class BaseViewController: UIViewController {
     
     func initTabBarWith(selectedIndex:Int){
         
-        let menu_badges = UIImage(named: "menu_qr")
-        let menu_home = UIImage(named: "menu_home")
-        let menu_profile = UIImage(named: "menu_profile")
-        let menu_search = UIImage(named: "menu_search")
-        let menu_submit_bar = UIImage(named: "menu_submit_bar")
+//        let menu_badges = UIImage(named: "menu_search")
+//        let menu_home = UIImage(named: "menu_search")
+//        let menu_profile = UIImage(named: "menu_search")
+//        let menu_search = UIImage(named: "menu_search")
+//        let menu_submit_bar = UIImage(named: "menu_search")
         
         let viewController1:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as UIViewController
         let viewController2:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HistoryViewController") as UIViewController
@@ -48,10 +48,10 @@ class BaseViewController: UIViewController {
         tabBarController.selectedIndex = selectedIndex
         
         //adding all three views to the TabBarView
-        let item1 = UITabBarItem(title: "Jamil", image: menu_search, tag: 0)
-        let item2 = UITabBarItem(title: "hossain", image: menu_search, tag: 1)
-        let item3 = UITabBarItem(title: "Banla", image: menu_search, tag: 2)
-        let item4 = UITabBarItem(title: "goge", image: menu_search, tag: 3)
+        let item1 = UITabBarItem(title: "Jamil", image: nil, tag: 0)
+        let item2 = UITabBarItem(title: "hossain", image: nil, tag: 1)
+        let item3 = UITabBarItem(title: "Banla", image: nil, tag: 2)
+        let item4 = UITabBarItem(title: "goge", image: nil, tag: 3)
         
         viewController1.tabBarItem = item1
         viewController2.tabBarItem = item2
@@ -81,15 +81,11 @@ class BaseViewController: UIViewController {
     }
     
     //refresh tab bar
-    
     @objc func refreshTabBarWith(selectedIndex:Int){
-        
         tabBarController?.selectedIndex = 2
-        
     }
     
     //MARK: Alert
-    
     func showAlert(msg:String){
         let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { action in

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,23 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCK-OH-MIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1828" y="137"/>
-        </scene>
-        <!--Search View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SearchViewController" customModule="WikiMedia" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="feF-XB-Jar"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-130" y="90"/>
+            <point key="canvasLocation" x="-1822" y="87"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="Xvj-AB-Q6G">
@@ -85,5 +70,133 @@
             </objects>
             <point key="canvasLocation" x="1599" y="87"/>
         </scene>
+        <!--SearchViewController-->
+        <scene sceneID="5K7-5L-8D5">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wkf-T0-Dr8" userLabel="SearchViewController" customClass="SearchViewController" customModule="WikiMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M4b-c8-5mN"/>
+                        <viewControllerLayoutGuide type="bottom" id="ed5-mu-Atb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3gF-J7-3Av">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ecb-bR-Cqx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellSearchBar" rowHeight="60" id="t1L-Hh-ccA" userLabel="CellSearchBar" customClass="CellSearchBar" customModule="CraftBeer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t1L-Hh-ccA" id="ylq-3V-DjB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XSF-G5-L2m">
+                                                    <rect key="frame" x="10" y="14" width="310" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="ylq-3V-DjB" id="DSc-By-7AP"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7F-TQ-VGr">
+                                                    <rect key="frame" x="327" y="5" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="bPD-Kk-SOO"/>
+                                                    </constraints>
+                                                    <state key="normal" image="menu_search"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V7F-TQ-VGr" firstAttribute="leading" secondItem="XSF-G5-L2m" secondAttribute="trailing" constant="7" id="6SU-Cq-67W"/>
+                                                <constraint firstItem="V7F-TQ-VGr" firstAttribute="top" secondItem="ylq-3V-DjB" secondAttribute="topMargin" constant="-6" id="8XE-Ae-Mw1"/>
+                                                <constraint firstItem="XSF-G5-L2m" firstAttribute="centerY" secondItem="V7F-TQ-VGr" secondAttribute="centerY" id="Blh-jz-dlD"/>
+                                                <constraint firstAttribute="trailing" secondItem="V7F-TQ-VGr" secondAttribute="trailing" id="ghF-1B-wTw"/>
+                                                <constraint firstItem="XSF-G5-L2m" firstAttribute="centerY" secondItem="ylq-3V-DjB" secondAttribute="centerY" id="rnX-3r-dpG"/>
+                                                <constraint firstItem="XSF-G5-L2m" firstAttribute="leading" secondItem="ylq-3V-DjB" secondAttribute="leadingMargin" constant="-5" id="u2Q-Dy-n8M"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="inputTextField" destination="XSF-G5-L2m" id="IMq-GS-aFv"/>
+                                            <outlet property="searchButton" destination="V7F-TQ-VGr" id="ILO-3R-rvp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellResult" rowHeight="100" id="cr9-3H-DlD" customClass="CellResult" customModule="WikiMedia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cr9-3H-DlD" id="tKc-Cr-06y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kzg-Y1-DBg">
+                                                    <rect key="frame" x="9" y="0.0" width="359" height="101"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHf-jk-v2G">
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="BgP-h2-6Aw"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nelson Mandela Bay Stadium Mandela: Long Walk to Freedom Nelson Mandela University Statue of Nelson Mandela, Johannesburg" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmP-4O-Y9l">
+                                                            <rect key="frame" x="0.0" y="44" width="359" height="57"/>
+                                                            <color key="backgroundColor" red="0.92941182850000004" green="0.69411766529999996" blue="0.32156863810000003" alpha="1" colorSpace="deviceRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kzg-Y1-DBg" firstAttribute="centerX" secondItem="tKc-Cr-06y" secondAttribute="centerX" constant="1" id="Ts7-bR-1vh"/>
+                                                <constraint firstItem="kzg-Y1-DBg" firstAttribute="centerY" secondItem="tKc-Cr-06y" secondAttribute="centerY" id="ejd-ct-uEt"/>
+                                                <constraint firstItem="kzg-Y1-DBg" firstAttribute="leading" secondItem="tKc-Cr-06y" secondAttribute="leadingMargin" constant="-6" id="fIQ-ho-qsZ"/>
+                                                <constraint firstItem="kzg-Y1-DBg" firstAttribute="top" secondItem="tKc-Cr-06y" secondAttribute="top" id="vCj-aK-SPt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailLabel" destination="BmP-4O-Y9l" id="Kg1-r7-ukJ"/>
+                                            <outlet property="titleLabel" destination="zHf-jk-v2G" id="rkg-xs-e4I"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellEmpty" id="cAc-Bu-Cad" userLabel="CellEmpty" customClass="CellEmpty" customModule="CraftBeer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cAc-Bu-Cad" id="6vi-8K-H69">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Ecb-bR-Cqx" firstAttribute="leading" secondItem="3gF-J7-3Av" secondAttribute="leading" id="3Yi-U7-3RW"/>
+                            <constraint firstAttribute="trailing" secondItem="Ecb-bR-Cqx" secondAttribute="trailing" id="PaI-xc-UOc"/>
+                            <constraint firstItem="Ecb-bR-Cqx" firstAttribute="bottom" secondItem="ed5-mu-Atb" secondAttribute="top" id="VKi-yT-rlh"/>
+                            <constraint firstItem="Ecb-bR-Cqx" firstAttribute="top" secondItem="3gF-J7-3Av" secondAttribute="top" id="Xig-KC-ltW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7NZ-q0-Vmm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="menu_home" selectedImage="menu_home" id="Jnr-Yr-pOa"/>
+                    <connections>
+                        <outlet property="myTableView" destination="Ecb-bR-Cqx" id="Y9B-SK-Q8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHT-6l-aGx" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="87"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="menu_home" width="16" height="16"/>
+        <image name="menu_search" width="48" height="48"/>
+    </resources>
 </document>

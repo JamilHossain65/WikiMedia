@@ -8,5 +8,6 @@ target 'WikiMedia' do
   # Pods for WikiMedia
 
   pod 'Alamofire'
+  pod 'SVProgressHUD'
 
 end

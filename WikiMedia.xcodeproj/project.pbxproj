@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8722801321B5112200A93A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722801221B5112200A93A6E /* AppDelegate.swift */; };
-		8722801521B5112200A93A6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722801421B5112200A93A6E /* ViewController.swift */; };
+		8722801521B5112200A93A6E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722801421B5112200A93A6E /* BaseViewController.swift */; };
 		8722801821B5112200A93A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8722801621B5112200A93A6E /* Main.storyboard */; };
 		8722801A21B5112300A93A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8722801921B5112300A93A6E /* Assets.xcassets */; };
 		8722801D21B5112300A93A6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8722801B21B5112300A93A6E /* LaunchScreen.storyboard */; };
+		87E7865E21B52BA600D8E75C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7865D21B52BA600D8E75C /* SearchViewController.swift */; };
+		87E7866221B53F2F00D8E75C /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866021B53F2F00D8E75C /* WebClient.swift */; };
+		87E7866321B53F2F00D8E75C /* WebClientSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866121B53F2F00D8E75C /* WebClientSearch.swift */; };
+		87E7866621B5412500D8E75C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866521B5412400D8E75C /* Search.swift */; };
 		A47DB00C3F5F8551C7BF65AC /* Pods_WikiMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -19,11 +23,15 @@
 		201E78F2503BFCF647332955 /* Pods-WikiMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia.debug.xcconfig"; sourceTree = "<group>"; };
 		8722800F21B5112200A93A6E /* WikiMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8722801221B5112200A93A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8722801421B5112200A93A6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8722801421B5112200A93A6E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8722801721B5112200A93A6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8722801921B5112300A93A6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8722801C21B5112300A93A6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8722801E21B5112300A93A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E7865D21B52BA600D8E75C /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		87E7866021B53F2F00D8E75C /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
+		87E7866121B53F2F00D8E75C /* WebClientSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClientSearch.swift; sourceTree = "<group>"; };
+		87E7866521B5412400D8E75C /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikiMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF5E17A52E7B7B4624B0444 /* Pods-WikiMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,14 +78,34 @@
 		8722801121B5112200A93A6E /* WikiMedia */ = {
 			isa = PBXGroup;
 			children = (
+				87E7866421B5412400D8E75C /* Model */,
+				87E7865F21B53F2F00D8E75C /* WebClient */,
 				8722801221B5112200A93A6E /* AppDelegate.swift */,
-				8722801421B5112200A93A6E /* ViewController.swift */,
+				8722801421B5112200A93A6E /* BaseViewController.swift */,
+				87E7865D21B52BA600D8E75C /* SearchViewController.swift */,
 				8722801621B5112200A93A6E /* Main.storyboard */,
 				8722801921B5112300A93A6E /* Assets.xcassets */,
 				8722801B21B5112300A93A6E /* LaunchScreen.storyboard */,
 				8722801E21B5112300A93A6E /* Info.plist */,
 			);
 			path = WikiMedia;
+			sourceTree = "<group>";
+		};
+		87E7865F21B53F2F00D8E75C /* WebClient */ = {
+			isa = PBXGroup;
+			children = (
+				87E7866021B53F2F00D8E75C /* WebClient.swift */,
+				87E7866121B53F2F00D8E75C /* WebClientSearch.swift */,
+			);
+			path = WebClient;
+			sourceTree = "<group>";
+		};
+		87E7866421B5412400D8E75C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87E7866521B5412400D8E75C /* Search.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F2A71F001DD75292AF11944E /* Frameworks */ = {
@@ -162,15 +190,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-WikiMedia-checkManifestLockResult.txt",
 			);
@@ -184,17 +208,15 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -208,7 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8722801521B5112200A93A6E /* ViewController.swift in Sources */,
+				87E7865E21B52BA600D8E75C /* SearchViewController.swift in Sources */,
+				87E7866221B53F2F00D8E75C /* WebClient.swift in Sources */,
+				87E7866621B5412500D8E75C /* Search.swift in Sources */,
+				87E7866321B53F2F00D8E75C /* WebClientSearch.swift in Sources */,
+				8722801521B5112200A93A6E /* BaseViewController.swift in Sources */,
 				8722801321B5112200A93A6E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

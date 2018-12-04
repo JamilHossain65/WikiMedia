@@ -8,11 +8,8 @@
 
 import UIKit
 
-//import MapKit
 import Alamofire
 import SVProgressHUD
-//import SDWebImage
-//import SwiftHash
 
 
 class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
@@ -31,11 +28,11 @@ class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDa
         myTableView.delegate = self
         myTableView.backgroundColor = UIColor.lightGray
         myTableView.separatorStyle = .singleLine
+        myTableView.allowsSelection = true
+
+        //remove empty cell
         myTableView.tableFooterView = UIView()
         
-        let add = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addButtonPressed))
-        //navigationItem.rightBarButtonItems = [add]
-        navigationItem.rightBarButtonItem = add
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,7 +158,7 @@ class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDa
 //        return view;
 //    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 1.5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -192,14 +189,16 @@ class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDa
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellResult", for: indexPath) as? CellResult else {
                 fatalError("The dequeued cell is not an instance of CellResult.")
             }
-            cell.backgroundColor = UIColor.white
             
+            cell.backgroundColor = UIColor.white
             let result = webClient.searchList[indexPath.row]
             cell.titleLabel?.text = result.title
-            
             cell.detailLabel?.numberOfLines = 0
             cell.detailLabel?.text = result.snippet
             cell.detailLabel?.backgroundColor = UIColor.white
+            
+            cell.cellRightButton.tag = indexPath.row
+            
             return cell
         }
     }
@@ -207,24 +206,47 @@ class SearchViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         print("=> Row no. \(indexPath.row) selected ")
-//        let viewController:BarDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BarDetailViewController") as! BarDetailViewController
-//
-//        let webClient = WebClientSearchBarList.shared
-//        if(webClient.barList.count == 0){return}
-//        let bar:Bar = webClient.barList[indexPath.row]
-//        //viewController.review = review
-//        viewController.bar_id = bar.BarId
-//        viewController.barName = bar.Name
-//        navigationController?.pushViewController(viewController, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        /*
+        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReadViewController") as! UIViewController
+
+        let webClient = WebClientSearch.shared
+        if(webClient.searchList.count == 0){return}
+        let search:Search = webClient.searchList[indexPath.row]
+        
+        self.present(viewController, animated: true, completion: nil)
+        */
     }
-    
+   
+    //MARK: - Button Pressed action
     @IBAction func searchButtonPressed(btn:UIButton){
         print("searchButtonPressed")
         currentTextField.resignFirstResponder()
         self.searchRequestWith(text: currentTextField.text!)
     }
     
-    // MARK:- TextFieldDelegate
+    @IBAction func rightButtonPressed(btn:UIButton){
+        print("bookmarkButtonPressed")
+        
+        let webClient = WebClientSearch.shared
+        let search:Search = webClient.searchList[btn.tag]
+        let bookmark = Bookmarks.shared
+        
+        if(bookmark.exist(search: search)){
+            self.showAlert(msg: "Already Bookmarked!")
+        }else{
+            bookmark.add(search: search)
+            for search in bookmark.bookmarkList{
+                print("\(search.title)")
+            }
+            self.showAlertWithTitle(title: "Bookmarked", msg: search.title)
+        }
+        
+    }
+    
+    //MARK:  TextFieldDelegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
         currentTextField = textField

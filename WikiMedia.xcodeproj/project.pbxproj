@@ -18,6 +18,11 @@
 		87E7866621B5412500D8E75C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866521B5412400D8E75C /* Search.swift */; };
 		87E7866921B573E100D8E75C /* CellSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866821B573E100D8E75C /* CellSearchBar.swift */; };
 		87E7866B21B5895000D8E75C /* CellResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866A21B5895000D8E75C /* CellResult.swift */; };
+		87E7866F21B59F8D00D8E75C /* ReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7866E21B59F8D00D8E75C /* ReadViewController.swift */; };
+		87E7867121B6390700D8E75C /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7867021B6390700D8E75C /* Bookmarks.swift */; };
+		87E7867521B63C2900D8E75C /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7867221B63C2800D8E75C /* BookmarkViewController.swift */; };
+		87E7867621B63C2900D8E75C /* BowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7867321B63C2900D8E75C /* BowserViewController.swift */; };
+		87E7867721B63C2900D8E75C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E7867421B63C2900D8E75C /* HistoryViewController.swift */; };
 		A47DB00C3F5F8551C7BF65AC /* Pods_WikiMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,11 @@
 		87E7866521B5412400D8E75C /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		87E7866821B573E100D8E75C /* CellSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSearchBar.swift; sourceTree = "<group>"; };
 		87E7866A21B5895000D8E75C /* CellResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellResult.swift; sourceTree = "<group>"; };
+		87E7866E21B59F8D00D8E75C /* ReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadViewController.swift; sourceTree = "<group>"; };
+		87E7867021B6390700D8E75C /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
+		87E7867221B63C2800D8E75C /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		87E7867321B63C2900D8E75C /* BowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BowserViewController.swift; sourceTree = "<group>"; };
+		87E7867421B63C2900D8E75C /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D712A4A495712B42A64F49CC /* Pods_WikiMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikiMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF5E17A52E7B7B4624B0444 /* Pods-WikiMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikiMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-WikiMedia/Pods-WikiMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +98,10 @@
 				8722801221B5112200A93A6E /* AppDelegate.swift */,
 				8722801421B5112200A93A6E /* BaseViewController.swift */,
 				87E7865D21B52BA600D8E75C /* SearchViewController.swift */,
+				87E7867221B63C2800D8E75C /* BookmarkViewController.swift */,
+				87E7867421B63C2900D8E75C /* HistoryViewController.swift */,
+				87E7867321B63C2900D8E75C /* BowserViewController.swift */,
+				87E7866E21B59F8D00D8E75C /* ReadViewController.swift */,
 				8722801621B5112200A93A6E /* Main.storyboard */,
 				8722801921B5112300A93A6E /* Assets.xcassets */,
 				8722801B21B5112300A93A6E /* LaunchScreen.storyboard */,
@@ -109,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				87E7866521B5412400D8E75C /* Search.swift */,
+				87E7867021B6390700D8E75C /* Bookmarks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,10 +259,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E7867521B63C2900D8E75C /* BookmarkViewController.swift in Sources */,
 				87E7865E21B52BA600D8E75C /* SearchViewController.swift in Sources */,
+				87E7867621B63C2900D8E75C /* BowserViewController.swift in Sources */,
+				87E7867121B6390700D8E75C /* Bookmarks.swift in Sources */,
+				87E7867721B63C2900D8E75C /* HistoryViewController.swift in Sources */,
 				87E7866921B573E100D8E75C /* CellSearchBar.swift in Sources */,
 				87E7866B21B5895000D8E75C /* CellResult.swift in Sources */,
 				87E7866221B53F2F00D8E75C /* WebClient.swift in Sources */,
+				87E7866F21B59F8D00D8E75C /* ReadViewController.swift in Sources */,
 				87E7866621B5412500D8E75C /* Search.swift in Sources */,
 				87E7866321B53F2F00D8E75C /* WebClientSearch.swift in Sources */,
 				8722801521B5112200A93A6E /* BaseViewController.swift in Sources */,
